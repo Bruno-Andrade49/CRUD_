@@ -22,7 +22,7 @@ public class PessoaServicesImplements implements PessoaServices{
 	}
 
 	@Override
-	public Pessoa findById(long id) {
+	public Pessoa findById(int id) {
 		return  pessoaRepository.findById(id).get();
 	}
 
@@ -32,7 +32,7 @@ public class PessoaServicesImplements implements PessoaServices{
 	}
 
 	@Override
-	public Pessoa deleteById(long id) {
+	public Pessoa deleteById(int id) {
 		 pessoaRepository.deleteById(id);
 		return null;
 	}

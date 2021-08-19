@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.projetoCrud.projetoCrud01.model.Pessoa;
 
 @RepositoryRestResource(collectionResourceRel = "pessoa", path = "pessoa")
-public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
+public interface PessoaRepository extends JpaRepository<Pessoa, Integer>{
 
 }

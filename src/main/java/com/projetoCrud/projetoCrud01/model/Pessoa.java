@@ -1,6 +1,8 @@
 package com.projetoCrud.projetoCrud01.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,11 +16,14 @@ import org.springframework.stereotype.Repository;
 @Entity
 public class Pessoa {
 
+	@javax.validation.constraints.NotBlank
 	private String nome;
 
 	@Id
-	private long cpf;
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@javax.validation.constraints.NotBlank
 	private String dataNascimento;
 
 	public Pessoa() {
@@ -27,7 +32,6 @@ public class Pessoa {
 
 	public Pessoa(String nome, long cpf, String dataNascimento) {
 		this.nome = nome;
-		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -39,12 +43,12 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public long getCpf() {
-		return cpf;
+	public long getId() {
+		return id;
 	}
 
-	public void setCpf(long cpf) {
-		this.cpf = cpf;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getDataNascimento() {
@@ -57,15 +61,15 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + "]";
+		return "Pessoa [nome=" + nome + ", cpf=" + id + ", dataNascimento=" + dataNascimento + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (cpf ^ (cpf >>> 32));
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -79,12 +83,12 @@ public class Pessoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
-		if (cpf != other.cpf)
-			return false;
 		if (dataNascimento == null) {
 			if (other.dataNascimento != null)
 				return false;
 		} else if (!dataNascimento.equals(other.dataNascimento))
+			return false;
+		if (id != other.id)
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
