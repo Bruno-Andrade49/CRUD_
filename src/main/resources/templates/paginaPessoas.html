@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <meta charset="ISO-8859-1">
 <title>Cadastro de Pessoas</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="materialize.min.css"
+	media="screen,projection" />
+
 </head>
 <body>
-<h1>Seja bem vindo ao meu/seu CADASTRO DE PESSOAS</h1>
-<a1>Para realizar o cadastro de uma pessoa
-<a href="/salvarpessoa"> CLIQUE AQUI</a>
-</a1>
+	<h1>Seja bem vindo ao meu/seu CADASTRO DE PESSOAS</h1>
+	<a1>Para realizar o cadastro de uma pessoa <a href="/salvarpessoa">
+		CLIQUE AQUI</a> </a1>
+	<table class="centered">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Data de Nascimento</th>
+				<th scope="row"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pessoa : ${paginaPessoas}">
+				<td th:text="${pessoa.id}"></td>
+				<td th:text="${pessoa.nome}"></td>
+				<td th:text="${pessoa.dataNascimento}"></td>	
+				<td id="actions" class="row" >
+					<div class="col-md-12" >
+						<a href="pessoas" class="btn btn-primary" style="background-color:Gold;">Editar </a>
+						<a href="pessoas" class="btn btn-primary" style="background-color:red;">Remover</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.js"></script>
 </body>
 </html>
